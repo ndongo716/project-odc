@@ -17,16 +17,16 @@ pipeline {
 
         stage('Build des images') {
             steps {
-                sh "docker build -f Backend/dockerfile -t %BACKEND_IMAGE%:latest Backend"
-                sh "docker build -t %FRONTEND_IMAGE%:latest Frontend"
+                sh "docker build -f Backend/dockerfile -t $BACKEND_IMAGE:latest Backend"
+                sh "docker build -t $FRONTEND_IMAGE:latest Frontend"
             }
         }
 
         stage('Push des images sur Docker Hub') {
             steps {
                 withDockerRegistry([credentialsId: 'dockerhub', url: '']) {
-                    sh "docker push %BACKEND_IMAGE%:latest"
-                    sh "docker push %FRONTEND_IMAGE%:latest"
+                    sh "docker push $BACKEND_IMAGE:latest"
+                    sh "docker push $FRONTEND_IMAGE:latest"
                 }
             }
         }
