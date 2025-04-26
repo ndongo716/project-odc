@@ -17,7 +17,7 @@ services:
   frontend:
     image: geek120804/image-front:latest
     ports:
-      - 5174:5173
+      - 5173:5173
     depends_on:
       - backend
 
