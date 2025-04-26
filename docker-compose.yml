@@ -25,7 +25,7 @@ services:
       - pgdata:/var/lib/postgresql/database
 
   db-migrations:
-    image: backend
+    image: geek120804/image-back:latest
     command: python manage.py migrate
     depends_on:
       - database
