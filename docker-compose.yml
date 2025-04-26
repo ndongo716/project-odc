@@ -15,7 +15,7 @@ services:
       - database
 
   frontend:
-    image: fatimadiao20/image-front:latest
+    image: geek120804/image-front:latest
     ports:
       - 5174:5173
     depends_on:
