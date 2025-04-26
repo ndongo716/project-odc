@@ -11,7 +11,7 @@ pipeline {
         stage('Cloner le dépôt') {
             steps {
                 git branch: 'master',
-                    url: 'https://github.com/ndongo716/projet-odc'
+                    url: 'https://github.com/ndongo716/project-odc'
             }
         }
 
