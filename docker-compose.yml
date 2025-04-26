@@ -1,6 +1,6 @@
 services:
   backend:
-    image: fatimadiao20/image-back:latest
+    image: geek120804/image-back:latest
     ports:
       - 8000:8080
     environment:
@@ -33,7 +33,7 @@ services:
       - pgdata:/var/lib/postgresql/data
 
   db-migrations:
-    image: fatimadiao20/image-back:latest
+    image: geek120804/image-back:latest
     command: >
       sh -c "
         echo 'Waiting for database...' &&
