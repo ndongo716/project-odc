@@ -34,9 +34,9 @@ pipeline {
         stage('Déploiement local avec Docker Compose') {
             steps {
                 sh '''
-                    docker-compose down || exit 0
-                    docker-compose pull
-                    docker-compose up -d --build
+                    docker compose down || exit 0
+                    docker compose pull
+                    docker compose up -d --build
                 '''
             }
         }
