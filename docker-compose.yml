@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   backend:
-    image: b
+    image: geek120804/image-back:latest
     build:
       context: ./Backend/odc
       dockerfile: Dockerfile
@@ -35,7 +35,7 @@ services:
       - tools
 
   frontend:
-    image: frontend
+    image: geek120804/image-front:latest
     build:
       context: ./Frontend
       dockerfile: Dockerfile
