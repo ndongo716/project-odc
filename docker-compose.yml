@@ -1,7 +1,7 @@
 services:
 
   backend:
-    image: geek120804/image-back:latest
+    image: geek120804/geek120804/image-back:latest
     build:
       context: ./Backend/
       dockerfile: dockerfile
@@ -33,7 +33,7 @@ services:
       - tools
 
   frontend:
-    image: geek120804/image-front:latest
+    image: geek120804/geek120804/image-front:latest
     build:
       context: ./Frontend
       dockerfile: dockerfile
