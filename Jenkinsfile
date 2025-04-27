@@ -17,6 +17,7 @@ pipeline {
 
         stage('Build des images') {
             steps {
+                sh "echo helloword"
                 sh "docker build -f Backend/dockerfile -t $BACKEND_IMAGE:latest Backend"
                 sh "docker build -t $FRONTEND_IMAGE:latest Frontend"
             }
