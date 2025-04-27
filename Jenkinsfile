@@ -26,8 +26,8 @@ pipeline {
         stage('Push des images sur Docker Hub') {
             steps {
                 withDockerRegistry([credentialsId: 'dockerhub', url: '']) {
-                    sh "docker push $BACKEND_IMAGE:latest"
-                    sh "docker push $FRONTEND_IMAGE:latest"
+                    sh "sudo docker push $BACKEND_IMAGE:latest"
+                    sh "sudo docker push $FRONTEND_IMAGE:latest"
                 }
             }
         }
@@ -35,9 +35,9 @@ pipeline {
         stage('Déploiement local avec Docker Compose') {
             steps {
                 sh '''
-                    docker compose down || exit 0
-                    docker compose pull
-                    docker compose up -d --build
+                    sudo docker compose down || exit 0
+                    sudo docker compose pull
+                    sudo docker compose up -d --build
                 '''
             }
         }
