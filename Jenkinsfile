@@ -18,16 +18,16 @@ pipeline {
         stage('Build des images') {
             steps {
                 sh "echo helloword"
-                sh "sudo docker build -f Backend/dockerfile -t $BACKEND_IMAGE:latest Backend"
-                sh "sudo docker build -t $FRONTEND_IMAGE:latest Frontend"
+                sh "docker build -f Backend/dockerfile -t $BACKEND_IMAGE:latest Backend"
+                sh "docker build -t $FRONTEND_IMAGE:latest Frontend"
             }
         }
 
         stage('Push des images sur Docker Hub') {
             steps {
                 withDockerRegistry([credentialsId: 'dockerhub', url: '']) {
-                    sh "sudo docker push $BACKEND_IMAGE:latest"
-                    sh "sudo docker push $FRONTEND_IMAGE:latest"
+                    sh "docker push $BACKEND_IMAGE:latest"
+                    sh "docker push $FRONTEND_IMAGE:latest"
                 }
             }
         }
@@ -35,9 +35,9 @@ pipeline {
         stage('Déploiement local avec Docker Compose') {
             steps {
                 sh '''
-                    sudo docker compose down || exit 0
-                    sudo docker compose pull
-                    sudo docker compose up -d --build
+                    docker compose down || exit 0
+                    docker compose pull
+                    docker compose up -d --build
                 '''
             }
         }
