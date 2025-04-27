@@ -280,3 +280,4 @@ JAZZMIN_SETTINGS = {
 CORS_ALLOW_ALL_ORIGINS = True 
 # This is a comment
 # This is another comment
+# comment is good
