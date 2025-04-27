@@ -15,6 +15,13 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+            def mvn = tool 'maven';
+            withSonarQubeEnv() {
+              sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=ndongo716_project-odc_586a4b42-a10f-411c-bb56-d47545492e65 -Dsonar.projectName='project-odc'"
+            }
+        }
+
         stage('Build des images') {
             steps {
                 sh "echo helloword"
