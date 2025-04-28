@@ -10,13 +10,9 @@ node {
       sh "${scannerHome}/bin/sonar-scanner"
     }
   }
-  stage('Cloner le dépôt') {
-    steps {
-      git branch: 'main',
-        url: 'https://github.com/ndongo716/project-odc'
-    }
+  stage('SCM') {
+    checkout scm
   }
-
   stage('Build des images') {
     steps {
       sh "echo helloword"
