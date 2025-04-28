@@ -4,9 +4,6 @@ node {
     BACKEND_IMAGE = "${DOCKER_USER}/image-back"
     FRONTEND_IMAGE = "${DOCKER_USER}/image-front"
   }
-  stage('SCM') {
-    checkout scm
-  }
   stage('SonarQube Analysis') {
     def scannerHome = tool 'sonar';
     withSonarQubeEnv() {
