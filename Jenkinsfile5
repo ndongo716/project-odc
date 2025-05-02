@@ -8,7 +8,9 @@ pipeline {
         }
         stage("Quality Gate 2") {
             steps {
-                waitForQualityGate abortPipeline: true
+                withSonarQubeEnv() {
+                    waitForQualityGate abortPipeline: true
+                }
             }
         }
     }
