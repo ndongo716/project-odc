@@ -14,7 +14,11 @@ pipeline {
                     url: 'https://github.com/ndongo716/project-odc'
             }
         }
-
+        stage("Quality gate") {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
         stage('Build des images') {
             steps {
                 sh "echo helloword"
