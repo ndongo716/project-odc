@@ -1,12 +1,24 @@
-node {
-  stage('SCM') {
-    checkout scm
-  }
-  stage('SonarQube Analysis') {
-    def scannerHome = tool 'sonar';
-    withSonarQubeEnv() {
-      sh "${scannerHome}/bin/sonar-scanner"
-      waitForQualityGate abortPipeline: true
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone sources') {
+            steps {
+                git url: 'https://github.com/ndongo716/project-odc.git'
+            }
+        }
+
+        stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh "./gradlew sonarqube"
+                }
+            }
+        }
+        stage("Quality gate") {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
     }
-  }
 }
